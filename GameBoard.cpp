@@ -59,6 +59,15 @@ GameBoard::GameBoard(SDL_Renderer* render, int winW, int winH, Difficulty diff, 
 
     // 初始化地图数据
     initMapData();
+
+	// 加载用于显示时间的字体
+    fontTime = TTF_OpenFont(u8"assets/font/DS-DIGIT-4.ttf", 32);
+    if (!fontTime) {
+        SDL_Log("Failed to load font: %s", TTF_GetError());
+    }
+
+    // 初始化字体颜色为金色 (R=255, G=215, B=0)
+    colorTime = { 255, 215, 0, 255 };
 }
 
 // ==========================================================
@@ -97,6 +106,9 @@ GameBoard::~GameBoard()
     if (soundClick) Mix_FreeChunk(soundClick);
     if (soundEliminate) Mix_FreeChunk(soundEliminate);
     if (soundWin) Mix_FreeChunk(soundWin);
+
+	// 释放字体资源
+    if (fontTime) TTF_CloseFont(fontTime);
 }
 
 // ==========================================================
@@ -110,7 +122,7 @@ void GameBoard::loadResources()
     texBg = loadTexture("assets/texture/bg.png");
 
     // 2. 加载迷雾图片（如果没有专用图，暂时用 null，渲染时用色块代替）
-    // 使用 fog.png，没有的话也没关系
+    // 假设你有一个 fog.png，没有的话也没关系
     texFog = loadTexture("assets/texture/fog.png");
 
     // 3. 加载角色图片
@@ -142,7 +154,7 @@ SDL_Texture* GameBoard::loadTexture(const std::string& path)
     if (tempSurface == nullptr)
     {
         // 如果加载失败，在控制台输出错误信息
-        SDL_Log("无法加载图片: %s, 错误: %s", path.c_str(), SDL_GetError());
+        SDL_Log("Fail to load picture: %s, error: %s", path.c_str(), SDL_GetError());
         return nullptr;
     }
 
@@ -268,7 +280,7 @@ bool GameBoard::handleEvent(SDL_Event* ev)
             // 情况B：点击了不同种类的方块 -> 更新起点为新的点
             else if (map[beginPos.r][beginPos.c] != map[endPos.r][endPos.c])
             {
-                // 这里的设计是：如果玩家点了一个不一样的，
+                // 这里的设计是：如果你点错了一个不一样的，
                 // 那个新的不一样的点就变成新的“第一次点击”
                 beginPos = endPos;
                 endPos = { -2, -2 };
@@ -585,11 +597,19 @@ void GameBoard::updateFog()
     }
 }
 
+//dif jingyan start
+void GameBoard::playWinSound() {
+    if (soundWin)
+        Mix_PlayChannel(-1, soundWin, 0);
+}
+//dif jingyan end
+
 // ==========================================================
 // 渲染 (Render)
 // ==========================================================
 // 替换原有的 render (整合了所有优化)
-void GameBoard::render()
+//dif jingyan start
+void GameBoard::render(double currentTime)
 {
     // 1. 背景绘制 (裁切版)
     int w, h;
@@ -663,7 +683,82 @@ void GameBoard::render()
         // 时间到，清空线条数据
         lines.clear();
     }
+
+    // ==========================================
+    //   5. 绘制计时器窗口
+    // ==========================================
+    
+    if (fontTime)
+    {
+        // --- A. 定义背景框参数 ---
+        int fixedBoxW = 250; // 宽度
+        int fixedBoxH = 50;
+        int padding = 20;    // 左右边距
+
+        int winW, winH;
+        SDL_GetRendererOutputSize(renderer, &winW, &winH);
+
+        SDL_Rect bgRect;
+        bgRect.x = (winW - fixedBoxW) / 2;
+        bgRect.y = 20; // 距离顶部 20px
+        bgRect.w = fixedBoxW;
+        bgRect.h = fixedBoxH;
+
+        // --- B. 绘制背景框 ---
+        // 半透明底色
+        SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 150);
+        SDL_RenderFillRect(renderer, &bgRect);
+
+        // 白色边框
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 200);
+        SDL_RenderDrawRect(renderer, &bgRect);
+
+        // --- C. 绘制左侧标签 "Time:" ---
+        SDL_Surface* surfLabel = TTF_RenderUTF8_Blended(fontTime, "Time:", colorTime);
+        if (surfLabel)
+        {
+            SDL_Texture* texLabel = SDL_CreateTextureFromSurface(renderer, surfLabel);
+
+            SDL_Rect rectLabel;
+            rectLabel.w = surfLabel->w;
+            rectLabel.h = surfLabel->h;
+            // 左对齐计算：背景左边 + padding
+            rectLabel.x = bgRect.x + padding;
+            // 垂直居中
+            rectLabel.y = bgRect.y + (bgRect.h - surfLabel->h) / 2;
+
+            SDL_RenderCopy(renderer, texLabel, NULL, &rectLabel);
+
+            SDL_DestroyTexture(texLabel);
+            SDL_FreeSurface(surfLabel);
+        }
+
+        // --- D. 绘制右侧数值 "12.34 s" ---
+        char numBuf[32];
+        SDL_snprintf(numBuf, sizeof(numBuf), "%.2f s", currentTime);
+
+        SDL_Surface* surfNum = TTF_RenderUTF8_Blended(fontTime, numBuf, colorTime);
+        if (surfNum)
+        {
+            SDL_Texture* texNum = SDL_CreateTextureFromSurface(renderer, surfNum);
+
+            SDL_Rect rectNum;
+            rectNum.w = surfNum->w;
+            rectNum.h = surfNum->h;
+            // 右对齐计算：背景右边 - 文字宽度 - padding
+            rectNum.x = (bgRect.x + bgRect.w) - surfNum->w - padding;
+            // 垂直居中
+            rectNum.y = bgRect.y + (bgRect.h - surfNum->h) / 2;
+
+            SDL_RenderCopy(renderer, texNum, NULL, &rectNum);
+
+            SDL_DestroyTexture(texNum);
+            SDL_FreeSurface(surfNum);
+        }
+    }
 }
+//dif jingyan end
 
 bool GameBoard::isVictory() const
 {

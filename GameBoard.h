@@ -4,6 +4,7 @@
 #include <string>
 #include <SDL_mixer.h>
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 
 // GameBoard 类：负责处理游戏局内的所有逻辑、渲染和输入
 class GameBoard
@@ -43,7 +44,7 @@ private:
 
     // 居中偏移量 Y (像素)
     int offsetY;
-
+    
     // ==========================================
     // 游戏状态成员
     // ==========================================
@@ -89,6 +90,12 @@ private:
     Mix_Chunk* soundEliminate;
     Mix_Chunk* soundWin;
 
+    //dif jingyan start
+    // 计时器资源
+    TTF_Font* fontTime = nullptr;
+    SDL_Color colorTime; // 字体颜色
+    //dif jingyan end
+
 public:
     // ==========================================
     // 构造与析构
@@ -115,10 +122,15 @@ public:
 
     // 渲染画面
     // 包括背景、角色、连线、UI等
-    void render();
+    void render(double currentTime);
 
     // 检查游戏是否获胜
     bool isVictory() const;
+
+    //dif jingyan start
+    // 播放胜利音效
+    void playWinSound();
+    //dif jingyan end
 
 private:
     // ==========================================

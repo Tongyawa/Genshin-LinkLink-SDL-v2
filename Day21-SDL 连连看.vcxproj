@@ -30,26 +30,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -72,12 +72,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>D:\7Coding Tools\SDL2-2.0.22\include;D:\7Coding Tools\SDL2_image-2.6.1\include;D:\7Coding Tools\SDL2_mixer-2.6.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\7Coding Tools\SDL2-2.0.22\lib\x64;D:\7Coding Tools\SDL2_image-2.6.1\lib\x64;D:\7Coding Tools\SDL2_mixer-2.6.1\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\SDL\SDL2-2.32.10-VC\include;D:\SDL\SDL2_image-2.8.8-VC\include;D:\SDL\SDL2_mixer-2.8.1-VC\include;D:\SDL\SDL2_ttf-2.24.0-VC\include;D:\opencv\build\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>D:\7Coding Tools\SDL2-2.0.22\include;D:\7Coding Tools\SDL2_image-2.6.1\include;D:\7Coding Tools\SDL2_mixer-2.6.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\7Coding Tools\SDL2-2.0.22\lib\x64;D:\7Coding Tools\SDL2_image-2.6.1\lib\x64;D:\7Coding Tools\SDL2_mixer-2.6.1\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\SDL\SDL2-2.32.10-VC\include;D:\SDL\SDL2_image-2.8.8-VC\include;D:\SDL\SDL2_mixer-2.8.1-VC\include;D:\SDL\SDL2_ttf-2.24.0-VC\include;D:\opencv\build\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -114,13 +114,13 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>E:\Code\Coding_Tools\SDL2-2.32.10-VC\include;E:\Code\Coding_Tools\SDL2_image-2.8.8-VC\include;E:\Code\Coding_Tools\SDL2_mixer-2.8.1-VC\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\Code\Coding_Tools\SDL2-2.32.10-VC\include;E:\Code\Coding_Tools\SDL2_image-2.8.8-VC\include;E:\Code\Coding_Tools\SDL2_mixer-2.8.1-VC\include;E:\Code\Coding_Tools\SDL2_ttf-2.24.0-VC\include;E:\Code\Coding_Tools\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:\Code\Coding_Tools\SDL2-2.32.10-VC\lib\x64;E:\Code\Coding_Tools\SDL2_image-2.8.8-VC\lib\x64;E:\Code\Coding_Tools\SDL2_mixer-2.8.1-VC\lib\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;opencv_world4120d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\Code\Coding_Tools\SDL2-2.32.10-VC\lib\x64;E:\Code\Coding_Tools\SDL2_image-2.8.8-VC\lib\x64;E:\Code\Coding_Tools\SDL2_mixer-2.8.1-VC\lib\x64;E:\Code\Coding_Tools\SDL2_ttf-2.24.0-VC\lib\x64;E:\Code\Coding_Tools\opencv\build\x64\vc16\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -132,15 +132,15 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>E:\Code\Coding_Tools\SDL2-2.32.10-VC\include;E:\Code\Coding_Tools\SDL2_image-2.8.8-VC\include;E:\Code\Coding_Tools\SDL2_mixer-2.8.1-VC\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\Code\Coding_Tools\SDL2-2.32.10-VC\include;E:\Code\Coding_Tools\SDL2_image-2.8.8-VC\include;E:\Code\Coding_Tools\SDL2_mixer-2.8.1-VC\include;E:\Code\Coding_Tools\SDL2_ttf-2.24.0-VC\include;E:\Code\Coding_Tools\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:\Code\Coding_Tools\SDL2-2.32.10-VC\lib\x64;E:\Code\Coding_Tools\SDL2_image-2.8.8-VC\lib\x64;E:\Code\Coding_Tools\SDL2_mixer-2.8.1-VC\lib\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;opencv_world4120.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\Code\Coding_Tools\SDL2-2.32.10-VC\lib\x64;E:\Code\Coding_Tools\SDL2_image-2.8.8-VC\lib\x64;E:\Code\Coding_Tools\SDL2_mixer-2.8.1-VC\lib\x64;E:\Code\Coding_Tools\SDL2_ttf-2.24.0-VC\lib\x64;E:\Code\Coding_Tools\opencv\build\x64\vc16\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -150,9 +150,7 @@
   <ItemGroup>
     <ClInclude Include="GameBoard.h" />
     <ClInclude Include="Common.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="协作文档.md" />
+    <ClInclude Include="ExtraScenes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
