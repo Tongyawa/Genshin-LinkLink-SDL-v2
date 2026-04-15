@@ -46,7 +46,7 @@
     *   [SDL2](https://libsdl.org/) (核心窗口与渲染) - SDL2-2.32.10-VC
     *   [SDL2_image](https://github.com/libsdl-org/SDL_image) (PNG/JPG 图片加载) - SDL2_image-2.8.8-VC
     *   [SDL2_mixer](https://github.com/libsdl-org/SDL_mixer) (音频播放, FLAC/WAV 支持) - SDL2_mixer-2.8.1-VC
-    *[SDL2_ttf](https://github.com/libsdl-org/SDL_ttf) (TrueType 字体渲染) - SDL2_ttf-2.24.0-VC
+    *   [SDL2_ttf](https://github.com/libsdl-org/SDL_ttf) (TrueType 字体渲染) - SDL2_ttf-2.24.0-VC
 *   **视频解码：** [OpenCV 4.x](https://opencv.org/) (用于读取帧并转化为 SDL 纹理流)
 *   **开发环境：** 推荐使用 Visual Studio (Windows)
 
