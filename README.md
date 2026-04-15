@@ -1,4 +1,10 @@
 # 🌟 原神连连看 Genshin-LinkLink-SDL-v2
+
+![C++](https://img.shields.io/badge/Language-C++-blue.svg)
+![SDL2](https://img.shields.io/badge/Library-SDL2-green.svg)
+![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey.svg)
+![Status](https://img.shields.io/badge/Status-Archived-purple.svg)
+
 初始写于2025.12，现作归档。鉴于时间间隔久远，且代码语言、文件结构、资源文件均有较大变动，故另开一个项目。（作为程序设计大一上大作业）
 
  相比v1.0，用C++面向对象、模块化架构重构了C语言面条式结构，新增难度选择、迷雾模式玩法等功能，以及多用户记录、启动游戏动画、设置界面、游戏内实时计时器、结算窗口表现优化等（存储占用主要在视频和音乐）
