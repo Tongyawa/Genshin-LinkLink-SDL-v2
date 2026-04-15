@@ -1,9 +1,18 @@
+<div align="center">
+
 # 🌟 原神连连看 Genshin-LinkLink-SDL-v2
 
-![C++](https://img.shields.io/badge/Language-C++-blue.svg)
-![SDL2](https://img.shields.io/badge/Library-SDL2-green.svg)
-![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey.svg)
-![Status](https://img.shields.io/badge/Status-Archived-purple.svg)
+<!-- 徽章 -->
+<img src="https://img.shields.io/badge/Language-C++-blue.svg" />&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/Library-SDL2-green.svg" />&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/Platform-Windows-lightgrey.svg" />&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/Status-Archived-purple.svg" />
+
+基于 **C++** 和 **SDL2** 引擎开发的一款《原神》主题连连看小游戏。
+
+</div>
+
+---
 
 初始写于2025.12，现作归档。鉴于时间间隔久远，且代码语言、文件结构、资源文件均有较大变动，故另开一个项目。（作为程序设计大一上大作业）
 
@@ -11,7 +20,7 @@
  
 ---
 
-基于 **C++** 和 **SDL2** 引擎开发的一款《原神》主题连连看小游戏。本项目不仅实现了经典的连连看核心玩法，还一定程度上复刻了《原神》风格的 UI 界面，并加入了开场/过场视频、多用户本地存档、以及特色“迷雾模式”（鹤观寻航）。
+本项目不仅实现了经典的连连看核心玩法，还一定程度上复刻了《原神》风格的 UI 界面，并加入了开场/过场视频、多用户本地存档、以及特色“迷雾模式”（鹤观寻航）。
 
 无论是作为 C++/SDL2 的学习实战项目，还是作为原神同人小游戏，都具有参考与游玩价值。
 
